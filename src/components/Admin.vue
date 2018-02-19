@@ -49,7 +49,6 @@
                             <td>9"</td>
                             <td>1</td>
                             <td>6.95</td>
-
                         </tr>
                     </tbody>
                 </table>

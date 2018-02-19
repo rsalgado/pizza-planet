@@ -23,11 +23,33 @@
     export default {
         methods: {
             signIn() {
-                
+                let email = document.getElementById("email").value;
+                let password = document.getElementById("password").value;
+
+                Firebase.auth()
+                    .signInWithEmailAndPassword(email, password)
+                    .catch(error => {
+                        let errorCode = error.code;
+                        let errorMessage = error.message;
+
+                        if (errorCode === 'auth/wrong-password') {
+                            alert("Wrong Password");
+                        }
+                        else {
+                            alert(errorMessage);
+                        }
+                    });
             },
 
             signOut() {
-                
+                Firebase.auth()
+                    .signOut()
+                    .then(() => {
+                        alert("Logged out");
+                    })
+                    .catch(error => {
+                        alert("Error");
+                    });
             }
         }
     }

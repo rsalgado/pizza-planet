@@ -57,6 +57,8 @@
 </template>
 
 <script type="text/javascript">
+    import {dbMenuRef} from '../firebaseConfig';
+
     export default {
         data() {
             return {
@@ -69,15 +71,14 @@
                     }, {
                         size: 12,
                         price: 10.95
-                    }
-                    ]
+                    }]
                 }
             };
         },
 
         methods: {
             addMenuItem() {
-                console.log(this.newPizza);
+                dbMenuRef.push(this.newPizza);
             }
         }
     }

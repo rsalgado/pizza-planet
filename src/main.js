@@ -7,12 +7,14 @@ import App from './App.vue';
 Vue.use(VueRouter);
 
 const routes = [
-    {path: "/", component: Home },
-    {path: "/menu", component: Menu }
+    { path: "/", component: Home },
+    { path: "/menu", component: Menu },
+    { path: "*", redirect: "/" }
 ];
 
 const router = new VueRouter({
-    routes
+    routes,
+    mode: "history"
 });
 
 new Vue({

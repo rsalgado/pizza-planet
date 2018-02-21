@@ -10,7 +10,16 @@ import OrderingGuide from './components/OrderingGuide.vue';
 
 
 export const routes = [
-    { path: "/", name: "homeLink", component: Home },
+    { 
+        path: "/", 
+        name: "homeLink", 
+        components: {
+            "default": Home,
+            "ordering-guide": OrderingGuide,
+            "delivery": Delivery,
+            "history": History
+        } 
+    },
     { path: "/menu", name: "menuLink", component: Menu },
     { path: "/admin", name: "adminLink", component: Admin, beforeEnter: (to, from, next) => {
         alert("This area is for authorized users only");

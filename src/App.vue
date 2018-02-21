@@ -10,6 +10,20 @@
       <router-view></router-view>
     </div>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <router-view name="ordering-guide"></router-view>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <router-view name="delivery"></router-view>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <router-view name="history"></router-view>
+        </div>
+      </div>
+    </div>
+
     <!-- Footer component (comes from `ppFooter`) -->
     <div class="container">
       <pp-footer></pp-footer>

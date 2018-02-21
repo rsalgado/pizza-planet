@@ -4,7 +4,7 @@
             <div class="background">
                 <h1>Welcome to Pizza Planet!</h1>
                 <h2>Feeling hungry?</h2>
-                <button class="btn btn-success ">Let's Order!</button>
+                <button class="btn btn-success" @click="goToMenu">Let's Order!</button>
             </div>
         </div>
     </div>
@@ -29,3 +29,13 @@
         padding: 20px;
     }
 </style>
+
+<script type="text/javascript">
+    export default {
+        methods: {
+            goToMenu() {
+                this.$router.push({ name: "menuLink" });
+            }
+        }
+    }
+</script>

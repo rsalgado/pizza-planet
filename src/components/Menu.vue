@@ -52,12 +52,12 @@
                     </tbody>
                 </table>
                 <p>Order total: </p>
-                <button class="btn btn-success btn-block">Place Order</button>
+                <button class="btn btn-success btn-block" @click="addNewOrder">Place Order</button>
             </div>
 
             <!-- Empty basket message -->
             <div v-else>
-                <p>{{ basketText }}</p>
+                <p>{{ basketText }}</p> {{ this.$store.state.orders }}
             </div>
         </div>
     </div>
@@ -68,6 +68,7 @@
     /* TODO: 
         Question: What do I use `export default` for? 
         Question: Why does data have to be a function?
+        Question: Why is `getMenuItems` returning a getter function itself instead of its evaluation?
     */
     export default {
         data() {
@@ -105,6 +106,12 @@
                 item.quantity--;
                 if (item.quantity === 0)
                     this.removeFromBasket(item);
+            },
+
+            addNewOrder() {
+                this.$store.commit("addOrder", this.basket);
+                this.basket = [];
+                this.basketText = "Thank you, your order has been placed :)";
             }
         }
     }

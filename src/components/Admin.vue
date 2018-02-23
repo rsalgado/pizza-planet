@@ -68,6 +68,7 @@
 <script type="text/javascript">
     import NewPizza from './NewPizza.vue';
     import Login from './Login.vue';
+    import { mapGetters } from 'vuex';
 
     export default {
         components: {
@@ -76,13 +77,10 @@
         },
 
         computed: {
-            getMenuItems() {
-                return this.$store.getters.getMenuItems;
-            },
-
-            numberOfOrders() {
-                return this.$store.getters.numberOfOrders;
-            }
+            ...mapGetters([
+                "numberOfOrders",
+                "getMenuItems"
+            ]),
         },
 
         beforeRouteLeave: (to, from, next) => {

@@ -69,7 +69,11 @@
         Question: What do I use `export default` for? 
         Question: Why does data have to be a function?
         Question: Why is `getMenuItems` returning a getter function itself instead of its evaluation?
+        Question: How does `...mapGetters` work?
     */
+
+    import { mapGetters } from 'vuex'; 
+
     export default {
         data() {
             return {
@@ -79,9 +83,9 @@
         },
 
         computed: {
-            getMenuItems() {
-                return this.$store.getters.getMenuItems;
-            }
+            ...mapGetters([
+                "getMenuItems"
+            ])
         },
 
         methods: {

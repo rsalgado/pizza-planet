@@ -72,7 +72,8 @@
         Question: How does `...mapGetters` work?
     */
 
-    import { mapGetters } from 'vuex'; 
+    import { mapGetters } from 'vuex';
+    import { dbOrdersRef } from '../firebaseConfig.js';
 
     export default {
         data() {
@@ -113,7 +114,8 @@
             },
 
             addNewOrder() {
-                this.$store.commit("addOrder", this.basket);
+                //this.$store.commit("addOrder", this.basket);
+                dbOrdersRef.push(this.basket);
                 this.basket = [];
                 this.basketText = "Thank you, your order has been placed :)";
             }

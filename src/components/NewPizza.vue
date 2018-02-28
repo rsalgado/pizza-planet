@@ -57,7 +57,7 @@
 </template>
 
 <script type="text/javascript">
-    import {dbMenuRef} from '../firebaseConfig';
+    import { dbMenuRef } from '../firebaseConfig.js';
 
     export default {
         data() {

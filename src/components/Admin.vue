@@ -16,10 +16,11 @@
                             <th>Remove from Menu</th>
                         </tr>
                     </thead>
-                    <tbody v-for="item in getMenuItems">
+                    <tbody v-for="item in getMenuItems" :key="item['.key']">
                         <tr>
                             <td>{{ item.name }}</td>
-                            <td><button class="btn btn-outline-danger btn-sm">x</button></td>
+                            <td><button class="btn btn-outline-danger btn-sm"
+                                        @click="removeMenuItem(item['.key'])">x</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -28,8 +29,8 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <h3>Current orders: {{ numberOfOrders }} </h3>
-                <table class="table table-sm" v-for="orders in getOrders">
+                <h3>Current orders: {{ numberOfOrders }}</h3>
+                <table class="table table-sm" v-for="(orders, index) in getOrders" :key="orders['.key']">
                     <thead class="thead-default">
                         <tr>
                             <th>Item</th>
@@ -40,8 +41,9 @@
                     </thead>
                     <tbody>
                         <div class="order-number">
-                            <strong><em>Order Number: 1</em></strong>
-                            <button class="btn btn-outline-danger btn-sm">x</button>
+                            <strong><em>Order Number: {{ index+1 }}</em></strong>
+                            <button class="btn btn-outline-danger btn-sm"
+                                    @click="removeOrder(orders['.key'])">x</button>
                         </div>
 
                         <tr v-for="orderItems in orders['.value']">
@@ -69,6 +71,7 @@
     import NewPizza from './NewPizza.vue';
     import Login from './Login.vue';
     import { mapGetters } from 'vuex';
+    import { dbMenuRef, dbOrdersRef } from '../firebaseConfig.js';
 
     export default {
         components: {
@@ -82,6 +85,16 @@
                 "getMenuItems",
                 "getOrders",
             ]),
+        },
+
+        methods: {
+            removeMenuItem(itemKey) {
+                dbMenuRef.child(itemKey).remove();
+            },
+
+            removeOrder(orderKey) {
+                dbOrdersRef.child(orderKey).remove();
+            }
         },
 
         beforeRouteLeave: (to, from, next) => {

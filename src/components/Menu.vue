@@ -57,7 +57,7 @@
 
             <!-- Empty basket message -->
             <div v-else>
-                <p>{{ basketText }}</p> {{ this.$store.state.orders }}
+                <p>{{ basketText }}</p>
             </div>
         </div>
     </div>

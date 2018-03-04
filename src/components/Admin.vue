@@ -110,3 +110,9 @@
         },
     }
 </script>
+
+<style type="text/css">
+    .order-number {
+        margin: 10px 0;
+    }
+</style>

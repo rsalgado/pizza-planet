@@ -2,10 +2,11 @@
     <div class="row">
         <div>
             <div>
-                <p>
+                <p v-if="currentUser">
                     Logged in as: <br/>
                     <pre>{{ currentUser }}</pre>
                 </p>
+                <p v-else>Please login to continue</p>
             </div>
             <form>
                 <div class="form-group">
@@ -79,3 +80,9 @@
         }
     }
 </script>
+
+<style type="text/css">
+    form {
+        margin: 20px 0;
+    }
+</style>

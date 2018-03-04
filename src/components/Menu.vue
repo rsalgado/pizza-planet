@@ -51,7 +51,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <p>Order total: </p>
+                <p>Order total: {{ total }}</p>
                 <button class="btn btn-success btn-block" @click="addNewOrder">Place Order</button>
             </div>
 
@@ -86,7 +86,11 @@
         computed: {
             ...mapGetters([
                 "getMenuItems"
-            ])
+            ]),
+
+            total() {
+                return this.basket.reduce((total, item) =>  total + item.quantity * item.price, 0);
+            }
         },
 
         methods: {

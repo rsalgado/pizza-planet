@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import { routes } from './routes.js';
 import { store } from './store/store.js';
+import Accounting from 'accounting-js';
 
 import App from './App.vue';
 
@@ -16,6 +17,9 @@ const router = new VueRouter({
         else    return {x: 0, y: 0};
     }
 });
+
+// Add filter for currency
+Vue.filter("currency",  (val) => Accounting.formatMoney(val));
 
 new Vue({
   el: '#app',

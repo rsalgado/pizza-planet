@@ -1,6 +1,6 @@
 # pizza-planet
 
-> A Vue.js project
+> A Vue.js project for a [Udemy course](https://www.udemy.com/vuejs-build-a-full-stack-app-with-firebase-vuex-router/) using Vue.js, Vue-Router, Vuex and Firebase with the code written in mondern javascript (ES2015).
 
 ## Build Setup
 
